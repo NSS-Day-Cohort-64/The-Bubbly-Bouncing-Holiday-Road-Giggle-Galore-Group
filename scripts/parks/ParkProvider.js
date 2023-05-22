@@ -1,3 +1,4 @@
+import { setParksId } from "../TransientState.js"
 
 
 export const parksList = async () => {
@@ -15,6 +16,14 @@ export const parksList = async () => {
     return html
 }
 
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "parks" ) {
+            setParksId(changeEvent.target.value)
+        }
+    }
+)
 
 
 
