@@ -1,0 +1,25 @@
+.main-content {
+    display: flex;
+}
+.middle-section {
+    display: flex;
+    flex-direction: column;
+}
+.dropboxes {
+    
+    border: solid 1px black;
+    padding: 4px;
+}
+.selected-options {
+   
+    border: solid 1px black;
+}
+.weather {
+   
+    border: solid 1px black
+}
+
+.itinerary-list {
+    
+    border: solid 1px black
+}
