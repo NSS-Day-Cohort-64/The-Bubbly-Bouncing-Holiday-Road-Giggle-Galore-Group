@@ -1,10 +1,13 @@
 import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
+import { parksList } from "./parks/ParkProvider.js";
 
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
-  const eateryHTML = await eateryList();
+
+  const eateryHTML = await eateryList()
+  const parks = await parksList()
   const attractionHTML = await attractionList();
 
   const composedHTML = `
@@ -19,7 +22,7 @@ const render = async () => {
             <div class="dropboxes">
                 <h2>dropboxes</h2>
                     <section class="parks">
-                    
+                    ${parks}
                     </section>
                         
                     <section class="eateries">
