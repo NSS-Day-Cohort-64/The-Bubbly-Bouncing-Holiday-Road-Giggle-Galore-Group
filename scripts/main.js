@@ -1,16 +1,18 @@
+import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
 
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
   const eateryHTML = await eateryList();
+  const attractionHTML = await attractionList();
 
   const composedHTML = `
     <h1>Holiday Road</h1>
+
     <article class="main-content">
         <aside class="weather">
             <h2>Weather</h2>
-           
         </aside>
 
         <div class="middle-section">
@@ -25,24 +27,20 @@ const render = async () => {
                     </section>
                         
                     <section class="attractions">
-                        
+                        ${attractionHTML}
                     </section>
             </div>
             
                 <section class="selected-options">
                     <h2>selected</h2>
                 </section>
-            
         </div>
-           
 
             <aside class="itinerary-list">
                 <h2>list</h2>
             </aside>
     </article>
-            
-       
-    `;
+  `;
 
   container.innerHTML = composedHTML;
 };
