@@ -1,4 +1,4 @@
-import { setEateriesId } from "./TransientState.js"
+import { setEateriesId } from "../TransientState.js"
 
 const handleEatsChoice = (event) => {
     if (event.target.id === "eateriesSelect") {
@@ -18,8 +18,7 @@ export const eateryList = async () => {
     return `<option value="${eat.id}">${eat.businessName}</option>`;
   });
 
-  let dropdownHTML = `<h1>Eatery Selection</h1>
-                        <select id="eateriesSelect">
+  let dropdownHTML = `<select id="eateriesSelect">
                           <option>Eatery Choices</option>
                           ${optionsHTML.join("")}
                         </select>`;
