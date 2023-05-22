@@ -1,10 +1,10 @@
-
+import { eateryList } from "./eateries/EateryProvider.js";
 
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
     
-
+  const eateryHTML = await eateryList()
 
     const composedHTML = `
         <h1>Holiday Road</h1>
@@ -15,7 +15,7 @@ const render = async () => {
             </section>
                 
             <section class="eateries">
-                
+                ${eateryHTML}
             </section>
                 
             <section class="attractions">
