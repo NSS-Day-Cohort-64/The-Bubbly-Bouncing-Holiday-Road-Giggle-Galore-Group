@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 .dropboxes {
-    
+    display: flex;
     border: solid 1px black;
     padding: 4px;
 }
