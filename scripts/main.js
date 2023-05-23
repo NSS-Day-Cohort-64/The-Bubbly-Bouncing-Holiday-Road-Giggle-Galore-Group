@@ -2,6 +2,10 @@ import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
 import { parksList } from "./parks/ParkProvider.js";
 
+
+
+
+
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
@@ -9,7 +13,8 @@ const render = async () => {
   const eateryHTML = await eateryList()
   const parks = await parksList()
   const attractionHTML = await attractionList();
-
+  
+  
   const composedHTML = `
     <h1>Holiday Road</h1>
 
@@ -36,6 +41,10 @@ const render = async () => {
             
                 <section class="selected-options">
                     <h2>selected</h2>
+                    <div id="parkNameContainer"></div>
+                    <div id="eateryNameContainer"></div>
+                    <div id="attractionNameContainer"></div>
+                   
                 </section>
         </div>
 
