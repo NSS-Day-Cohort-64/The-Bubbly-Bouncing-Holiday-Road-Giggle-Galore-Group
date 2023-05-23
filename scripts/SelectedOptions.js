@@ -13,4 +13,6 @@ export const saveItineraryButton = () => {
     </div>`
 }
   
-  
+  const itineraryList = () => {
+    const response = fetch()
+  }
