@@ -1,3 +1,6 @@
+h2 {
+    text-align: center;
+}
 .main-content {
     display: flex;
 }
@@ -9,17 +12,26 @@
     display: flex;
     border: solid 1px black;
     padding: 4px;
+    align-items: center;
+    justify-content: space-evenly;
+    
 }
 .selected-options {
-   
-    border: solid 1px black;
+   display: flex;
 }
 .weather {
-   
+    
     border: solid 1px black
 }
 
 .itinerary-list {
     
     border: solid 1px black
+}
+.buttons {
+    border: solid 1px black;
+
+}
+.button {
+    text-align: center;
 }
