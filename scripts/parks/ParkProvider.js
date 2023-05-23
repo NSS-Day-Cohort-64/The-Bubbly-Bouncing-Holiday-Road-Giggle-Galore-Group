@@ -1,25 +1,6 @@
 import { setParksId } from "../TransientState.js";
 
-export const parksList = async () => {
-  try {
-    const fetchResponse = await fetch("https://developer.nps.gov/api/v1/parks?api_key=SB14CPSabSBvnka022NtJOwYUqNocKf5ghvFyYhI");
-    const parks = await fetchResponse.json();
-    const parksDataObj = parks.data;
-    let html = "<select id='parks'>";
-    html += "<option value='0'>Select a National Park</option>";
-
-    for (const park of parksDataObj) {
-      html += `<option value="${park.id}">${park.fullName}</option>`;
-    }
-    html += "</select>";
-    return html;
-  } catch (error) {
-    console.error(error);
-    return ""; // Return an empty string if there's an error
-  }
-};
-
-const displaySelectedParks = (parkName, parkId) => {
+const displaySelectedPark = (parkName, parkId) => {
   const parkNameContainer = document.querySelector("#parkNameContainer");
   if (parkNameContainer) {
     parkNameContainer.innerHTML = `
@@ -41,37 +22,68 @@ const showParkDetails = async (parkId) => {
     parkDetailsContainer.innerHTML = ""; // Clear the container
 
     try {
-      const response = await fetch(`https://developer.nps.gov/api/v1/parks?api_key=SB14CPSabSBvnka022NtJOwYUqNocKf5ghvFyYhI`);
-      const parkDetails = await response.json();
+      // Fetch all parks data
+      const response = await fetch(
+        "https://developer.nps.gov/api/v1/parks?api_key=SB14CPSabSBvnka022NtJOwYUqNocKf5ghvFyYhI"
+      );
+      const parksData = await response.json();
+      const parksDataObj = parksData.data;
+
+      // Find the selected park details from the parksDataObj array
+      const selectedPark = parksDataObj.find((park) => park.id === parkId);
 
       // Create an unordered list with park details
       const detailsList = document.createElement("ul");
 
-      // Specify the desired keys to display
-      const keysToDisplay = ["description", "states", "directionsInfo"];
+      // Display the park description
+      const descriptionListItem = document.createElement("li");
+      descriptionListItem.innerHTML = `<strong>Description:</strong> ${selectedPark.description}`;
+      detailsList.appendChild(descriptionListItem);
 
-      // Iterate through the desired keys and create list items
-      keysToDisplay.forEach((key) => {
-        if (parkDetails.hasOwnProperty(key)) {
-          const listItemHTML = `<li><strong>${key.toUpperCase()}:</strong> ${parkDetails[key]}</li>`;
-          detailsList.innerHTML += listItemHTML;
-        }
-      });
+      // Display the activity names
+      const activitiesListItem = document.createElement("li");
+      const activityNames = selectedPark.activities
+        .map((activity) => activity.name)
+        .join(", ");
+      activitiesListItem.innerHTML = `<strong>Activities:</strong> ${activityNames}`;
+      detailsList.appendChild(activitiesListItem);
 
       // Append the details list to the container
       parkDetailsContainer.appendChild(detailsList);
     } catch (error) {
-      console.error(error);
+      console.error("An error occurred while fetching park details:", error);
     }
   }
 };
 
-document.addEventListener("change", (changeEvent) => {
-  if (changeEvent.target.id === "parks") {
-    const selectedParkId = changeEvent.target.value;
-    setParksId(selectedParkId);
+const handleParkChoice = (event) => {
+  if (event.target.id === "parkSelect") {
+    const selectedParkId = event.target.value;
+    setParksId(event.target.value);
 
-    const selectedParkName = changeEvent.target.options[changeEvent.target.selectedIndex].text;
-    displaySelectedParks(selectedParkName, selectedParkId);
+    const selectedPark = event.target.options[event.target.selectedIndex].text;
+    displaySelectedPark(selectedPark, selectedParkId);
   }
-});
+};
+
+export const parksList = async () => {
+  const fetchResponse = await fetch(
+    "https://developer.nps.gov/api/v1/parks?api_key=SB14CPSabSBvnka022NtJOwYUqNocKf5ghvFyYhI"
+  );
+  const parks = await fetchResponse.json();
+  const parksDataObj = parks.data;
+  let optionsHTML = parksDataObj.map(
+    (park) => `<option value="${park.id}">${park.fullName}</option>`
+  );
+
+  let dropdownHTML = `
+    <select id="parkSelect">
+      <option>Select a National Park</option>
+      ${optionsHTML.join("")}
+    </select>
+  `;
+
+  document.addEventListener("change", handleParkChoice);
+
+  return dropdownHTML;
+};
