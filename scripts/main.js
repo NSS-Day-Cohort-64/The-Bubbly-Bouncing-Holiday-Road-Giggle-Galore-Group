@@ -2,6 +2,7 @@ import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
 import { parksList } from "./parks/ParkProvider.js";
 import { saveItineraryButton } from "./SelectedOptions.js";
+import { savedItineraries } from "./ItineraryList.js";
 
 
 
@@ -14,6 +15,7 @@ const render = async () => {
   const parks = await parksList()
   const attractionHTML = await attractionList();
   const saveButton = saveItineraryButton()
+  const itineraryList = await savedItineraries()
   
   const composedHTML = `
     <h1>Holiday Road</h1>
@@ -54,11 +56,13 @@ const render = async () => {
 
             <aside class="itinerary-list">
                 <h2>list</h2>
+                ${itineraryList}
             </aside>
     </article>
   `;
 
   container.innerHTML = composedHTML;
 };
-
+    
+    document.addEventListener("newItineraryCreated", render)
 render();
