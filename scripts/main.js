@@ -1,10 +1,7 @@
 import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
-import { parksList } from "./parks/ParkProvider.js";
-
-
-
-
+/* import { displayParkDetails } from "./parks/ParkDetails.js";
+ */ import { parksList } from "./parks/ParkProvider.js";
 
 const container = document.querySelector("#mainContainer");
 
@@ -41,7 +38,8 @@ const render = async () => {
             
                 <section class="selected-options">
                     <h2>selected</h2>
-                    <div id="parkNameContainer"></div>
+                    
+                    <div id="parkDetailsButton"></div>
                     <div id="eateryNameContainer"></div>
                     <div id="attractionNameContainer"></div>
                    
@@ -55,6 +53,7 @@ const render = async () => {
   `;
 
   container.innerHTML = composedHTML;
+
 };
 
 render();

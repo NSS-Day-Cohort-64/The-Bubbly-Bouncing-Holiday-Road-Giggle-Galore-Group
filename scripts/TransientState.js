@@ -1,13 +1,20 @@
 const transientState = {
     "parksId": "",
     "eateriesId": 0,
-    "attractionsId": 0
+    "attractionsId": 0,
 }
 
 export const setParksId = (chosenParks) => {
     transientState.parksId = chosenParks
     console.log(transientState)
+    
 }
+
+/* export const getParksDetails = async (parkId) => {
+  const fetchResponse = await fetch(`https://developer.nps.gov/api/v1/parks/${parkId}?api_key=SB14CPSabSBvnka022NtJOwYUqNocKf5ghvFyYhI`)
+  const parkDetails = await fetchResponse.json()
+  return parkDetails
+} */
 
 export const setEateriesId = (chosenEateries) => {
     transientState.eateriesId = chosenEateries

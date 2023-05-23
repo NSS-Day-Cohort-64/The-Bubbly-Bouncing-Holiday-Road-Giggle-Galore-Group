@@ -1,5 +1,3 @@
-
-
 import { setEateriesId } from "../TransientState.js";
 
 const displaySelectedEatery = (eateryName) => {
