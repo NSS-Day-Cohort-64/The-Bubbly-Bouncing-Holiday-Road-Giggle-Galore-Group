@@ -1,7 +1,7 @@
 import { attractionList } from "./attractions/AttractionProvider.js";
 import { eateryList } from "./eateries/EateryProvider.js";
 import { parksList } from "./parks/ParkProvider.js";
-
+import { saveItineraryButton } from "./SelectedOptions.js";
 
 
 
@@ -13,7 +13,7 @@ const render = async () => {
   const eateryHTML = await eateryList()
   const parks = await parksList()
   const attractionHTML = await attractionList();
-  
+  const saveButton = saveItineraryButton()
   
   const composedHTML = `
     <h1>Holiday Road</h1>
@@ -23,9 +23,11 @@ const render = async () => {
             <h2>Weather</h2>
         </aside>
 
+        
         <div class="middle-section">
-            <div class="dropboxes">
-                <h2>dropboxes</h2>
+        
+            
+                 <div class="dropboxes">
                     <section class="parks">
                     ${parks}
                     </section>
@@ -39,13 +41,15 @@ const render = async () => {
                     </section>
             </div>
             
+            <div class="buttons">
                 <section class="selected-options">
                     <h2>selected</h2>
                     <div id="parkNameContainer"></div>
                     <div id="eateryNameContainer"></div>
                     <div id="attractionNameContainer"></div>
-                   
-                </section>
+                    </section>
+                    <div class="button">${saveButton}</div>
+                    </div>
         </div>
 
             <aside class="itinerary-list">
