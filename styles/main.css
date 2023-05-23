@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 .dropboxes {
-    display: flex;
+    
     border: solid 1px black;
     padding: 4px;
 }
@@ -22,27 +22,4 @@
 .itinerary-list {
     
     border: solid 1px black
-}
-
-.dialog {
-    background-color: white;
-    padding: 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid black;
-    z-index: 9999;
-}
-
-.dialog h3 {
-    margin-top: 0;
-}
-
-.dialog p {
-    margin: 0;
-}
-
-.dialog button {
-    margin-top: 10px;
 }
