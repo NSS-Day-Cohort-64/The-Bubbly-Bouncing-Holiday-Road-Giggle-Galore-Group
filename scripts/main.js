@@ -55,6 +55,12 @@ const render = async () => {
             
             <div class="buttons">
                     <div class="button">${saveButton}</div></section>
+                <section>
+                  <h2> directions </h2>
+                  <div class = "directions">
+                  <p> hello there</p>
+                  </div>
+                </section>
             </div>
                 
         </div>

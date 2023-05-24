@@ -104,3 +104,7 @@ background-color: rgba(91, 156, 164, 0.74);
     background: #144E75;
 }
 
+.directions {
+    border: 5px solid black;
+}
+
