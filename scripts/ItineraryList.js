@@ -29,8 +29,9 @@ export const savedItineraries = async () => {
       <ul>
         <li>Park: ${parkFullName}</li>
         <li>Eatery: ${eateryBusinessName}</li>
-        <li>Attraction: ${eateryBusinessName}</li>
+        <li>Attraction: ${attractionName}</li>
       </ul>
+      <div> <button id = "directButton"> Get Directions</button>
       `;
   
       ordersHTML += orderElement.outerHTML;
@@ -38,4 +39,13 @@ export const savedItineraries = async () => {
   
     return ordersHTML;
   };
+
+  const directionButtons = () => {
+    document.addEventListener("click", handleDirections)
+  }
   
+  const handleDirections = (clickEvent) => {
+    if (clickEvent.id === 'directButton') {
+      
+    }
+  }

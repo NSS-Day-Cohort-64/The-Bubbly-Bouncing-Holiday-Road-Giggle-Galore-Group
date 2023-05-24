@@ -51,6 +51,12 @@ const render = async () => {
                     <div id="attractionNameContainer"></div>
                     </section>
                     <div class="button">${saveButton}</div>
+                <section>
+                  <h2> directions </h2>
+                  <div class = "directions">
+                  <p> hello there</p>
+                  </div>
+                </section>
                     </div>
         </div>
 
