@@ -25,6 +25,7 @@ export const savedItineraries = async () => {
       const parkFullName = park.fullName;
   
       const orderElement = document.createElement("div");
+      orderElement.classList.add("itineraryList");
       orderElement.innerHTML = `Itinerary #${itinerary.id}
       <ul>
         <li>Park: ${parkFullName}</li>

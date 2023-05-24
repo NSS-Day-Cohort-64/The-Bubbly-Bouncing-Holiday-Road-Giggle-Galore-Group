@@ -1,34 +1,5 @@
 {
   "itineraries": [
-    {
-      "parksId": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
-      "eateriesId": 2,
-      "attractionsId": 9,
-      "id": 1
-    },
-    {
-      "parksId": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
-      "eateriesId": 3,
-      "attractionsId": 2,
-      "id": 2
-    },
-    {
-      "parksId": "E6E1D22A-7A89-47F8-813C-B611059A8CF9",
-      "eateriesId": 6,
-      "attractionsId": 14,
-      "id": 3
-    },
-    {
-      "parksId": "6DA17C86-088E-4B4D-B862-7C1BD5CF236B",
-      "eateriesId": 7,
-      "attractionsId": 10,
-      "id": 4
-    },
-    {
-      "parksId": "FBF9F793-5114-4B61-A5BA-6F9ADDFDF459",
-      "eateriesId": 40,
-      "attractionsId": 24,
-      "id": 5
-    }
+    
   ]
 }

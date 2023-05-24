@@ -4,9 +4,6 @@ import { parksList } from "./parks/ParkProvider.js";
 import { saveItineraryButton } from "./SelectedOptions.js";
 import { savedItineraries } from "./ItineraryList.js";
 
-
-
-
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
@@ -29,35 +26,43 @@ const render = async () => {
         <div class="middle-section">
         
             
-                 <div class="dropboxes">
+                <div class="dropboxes">
                     <section class="parks">
                     ${parks}
+                        <section class="selected-parks">
+                        
+                            <div id="parkNameContainer"></div>
+                        </section>
                     </section>
                         
                     <section class="eateries">
                         ${eateryHTML}
+                        <section class="selected-eats">
+                    
+                            <div id="eateryNameContainer"></div>
+                        </section>
+                        
                     </section>
                         
                     <section class="attractions">
                         ${attractionHTML}
+
+                        <section class="selected-attractions">
+                            <div id="attractionNameContainer"></div>
+                        </section>
                     </section>
-            </div>
+                </div>
             
             <div class="buttons">
-                <section class="selected-options">
-                    <h2>selected</h2>
-                    <div id="parkNameContainer"></div>
-                    <div id="eateryNameContainer"></div>
-                    <div id="attractionNameContainer"></div>
-                    </section>
-                    <div class="button">${saveButton}</div>
+                    <div class="button">${saveButton}</div></section>
                 <section>
                   <h2> directions </h2>
                   <div class = "directions">
                   <p> hello there</p>
                   </div>
                 </section>
-                    </div>
+            </div>
+                
         </div>
 
             <aside class="itinerary-list">
@@ -68,6 +73,7 @@ const render = async () => {
   `;
 
   container.innerHTML = composedHTML;
+
 };
     
     document.addEventListener("newItineraryCreated", render)
