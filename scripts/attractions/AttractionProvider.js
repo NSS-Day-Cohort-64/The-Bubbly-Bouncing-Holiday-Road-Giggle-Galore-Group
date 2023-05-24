@@ -12,10 +12,10 @@ export const attractionList = async () => {
     return `<option value="${attraction.id}">${attraction.name}</option>`;
   });
 
-  let dropdownHTML = `<select id="attractSelect">
-                          <option>Select your attraction</option>
-                          ${optionsHTML.join("")}
-                        </select>`;
+  let dropdownHTML =
+    `<select id="attractSelect">
+   <option>Select your attraction</option> ${optionsHTML.join("")}
+    </select>`;
 
   return dropdownHTML;
 }
