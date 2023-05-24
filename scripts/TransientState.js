@@ -1,12 +1,13 @@
 const transientState = {
     "parksId": "",
     "eateriesId": 0,
-    "attractionsId": 0
+    "attractionsId": 0,
 }
 
 export const setParksId = (chosenParks) => {
     transientState.parksId = chosenParks
     console.log(transientState)
+    
 }
 
 export const setEateriesId = (chosenEateries) => {
