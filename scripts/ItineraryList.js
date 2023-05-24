@@ -29,7 +29,7 @@ export const savedItineraries = async () => {
       <ul>
         <li>Park: ${parkFullName}</li>
         <li>Eatery: ${eateryBusinessName}</li>
-        <li>Attraction: ${eateryBusinessName}</li>
+        <li>Attraction: ${attractionName}</li>
       </ul>
       `;
   

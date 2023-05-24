@@ -7,6 +7,7 @@ import { savedItineraries } from "./ItineraryList.js";
 
 
 
+
 const container = document.querySelector("#mainContainer");
 
 const render = async () => {
@@ -17,12 +18,14 @@ const render = async () => {
   const saveButton = saveItineraryButton()
   const itineraryList = await savedItineraries()
   
+  
   const composedHTML = `
     <h1>Holiday Road</h1>
 
     <article class="main-content">
-        <aside class="weather">
+        <aside id="parkWeatherContainer" class="weather">
             <h2>Weather</h2>
+           
         </aside>
 
         
