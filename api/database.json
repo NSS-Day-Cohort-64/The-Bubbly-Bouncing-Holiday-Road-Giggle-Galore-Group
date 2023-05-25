@@ -1,5 +1,10 @@
 {
   "itineraries": [
-    
+    {
+      "parksId": "C4E1A9A4-D121-4734-94FA-7788A93C2AAA",
+      "eateriesId": 7,
+      "attractionsId": 7,
+      "id": 1
+    }
   ]
 }
