@@ -14,12 +14,14 @@ const render = async () => {
   const saveButton = saveItineraryButton()
   const itineraryList = await savedItineraries()
   
+  
   const composedHTML = `
-    <h1>Holiday Road</h1>
+   <h1>Start Your Journey</h1>
 
     <article class="main-content">
-        <aside class="weather">
-            <h2>Weather</h2>
+        <aside id="parkWeatherContainer" class="weather">
+            <h3>Weather Forecast:</h3>
+           
         </aside>
 
         
@@ -58,7 +60,7 @@ const render = async () => {
                 <section>
                   <h2> directions </h2>
                   <div class = "directions">
-                  <p> hello there</p>
+                  <p id = "directionsHTML"></p>
                   </div>
                 </section>
             </div>

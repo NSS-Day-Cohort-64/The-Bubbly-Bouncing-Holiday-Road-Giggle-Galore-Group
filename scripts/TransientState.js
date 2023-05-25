@@ -1,4 +1,4 @@
-const transientState = {
+export const transientState = {
     "parksId": "",
     "eateriesId": 0,
     "attractionsId": 0,

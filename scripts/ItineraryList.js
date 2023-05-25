@@ -34,7 +34,7 @@ export const savedItineraries = async () => {
         <li>Eatery: ${eateryBusinessName}</li>
         <li>Attraction: ${attractionName}</li>
       </ul>
-      <div> <button data id = "directButton"> Get Directions</button>
+      <div> <button id= "directButton"> Get Directions</button>
       `;
   
       ordersHTML += orderElement.outerHTML;
@@ -43,27 +43,55 @@ export const savedItineraries = async () => {
     return ordersHTML;
   };
   
-  const handleDirections = (clickEvent) => {
+  const handleDirections = async (clickEvent) => {
     if (clickEvent.target.id === 'directButton') {
-      getParkDirections()
+      await getParkDirections()
     }
   }
 
   const getParkDirections = async() => {
     const response = await fetch(`https://graphhopper.com/api/1/geocode?q=${parkFullName}&locale=us&debug=true&key=18ddaec7-41f3-4433-91c3-33acd1099232`)
     const geocode = await response.json()
-    const parkLat = geocode.hits
-    const parkLng = geocode.hits
+    const firstHit = geocode.hits[0]
+    const parkLat = firstHit.point.lat
+    const parkLng = firstHit.point.lng
+    const parkLocation = `${parkLat},${parkLng}`
 
     const responsee = await fetch(`https://graphhopper.com/api/1/geocode?q=${eateryBusinessName}&locale=us&debug=true&key=18ddaec7-41f3-4433-91c3-33acd1099232`)
     const geocodee = await responsee.json()
+    const eatHit = geocodee.hits[0]
+    const eatLat = eatHit.point.lat
+    const eatLng = eatHit.point.lng
+    const eateryLocation = `${eatLat},${eatLng}`
     
     const responseee = await fetch(`https://graphhopper.com/api/1/geocode?q=${attractionName}&locale=us&debug=true&key=18ddaec7-41f3-4433-91c3-33acd1099232`)
     const geocodeee = await responseee.json()
+    const attractHit = geocodeee.hits[0]
+    const attractLat = attractHit.point.lat
+    const attractLng = attractHit.point.lng
+    const attractLocation = `${attractLat},${attractLng}`
 
-
+     await directions(parkLat,parkLng,eatLat,eatLng)
   }
 
- 
+  
+  const directions = async (startingLat,startingLng,endingLat,endingLng) => {
+  const response = await fetch(`https://graphhopper.com/api/1/route?point=${startingLat},${startingLng}&point=${endingLat},${endingLng}&vehicle=car&locale=us&instructions=true&calc_points=true&key=18ddaec7-41f3-4433-91c3-33acd1099232`)
+  const directionsData = await response.json()
+  const directText = directionsData.paths[0].instructions
+
+
+  let directHTML = ""
+  let stepNumber = 0
+  const directLoop = directText.forEach( text => {
+   stepNumber ++;
+    directHTML += `step ${stepNumber}: ${text.text}`
+  });
+
+
+  const myDirect = document.querySelector("#directionsHTML")
+  myDirect.innerHTML = directHTML
+
+}
   
 
