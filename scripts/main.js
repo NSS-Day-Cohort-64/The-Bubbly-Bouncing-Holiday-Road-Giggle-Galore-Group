@@ -16,11 +16,11 @@ const render = async () => {
   
   
   const composedHTML = `
-    <h1>Holiday Road</h1>
+   <h1>Start Your Journey</h1>
 
     <article class="main-content">
         <aside id="parkWeatherContainer" class="weather">
-            <h2>Weather</h2>
+            <h3>Weather Forecast:</h3>
            
         </aside>
 
