@@ -60,7 +60,7 @@ const render = async () => {
                 <section>
                   <h2> directions </h2>
                   <div class = "directions">
-                  <p> hello there</p>
+                  <p id = "directionsHTML"></p>
                   </div>
                 </section>
             </div>
